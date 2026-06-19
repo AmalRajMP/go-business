@@ -14,21 +14,17 @@ const Navbar = () => {
 
   return (
     <nav className="navbar">
-      <Link to="/" className="logo-link">
+      <Link to="/" className="logo-link" aria-label="Go to dashboard home">
         <h1 className="logo">Go Business</h1>
       </Link>
-      <div className="nav-items">
-        <button
-          type="button"
-          className="home-btn"
-          onClick={() => navigate("/", { replace: true })}
-        >
-          Home
-        </button>
+      <nav className="nav-items" aria-label="Primary">
+        <Link to="/" className="home-btn">
+          Try for free
+        </Link>
         <button type="button" className="logout-btn" onClick={onClickLogout}>
           Log out
         </button>
-      </div>
+      </nav>
     </nav>
   )
 }

@@ -19,17 +19,6 @@ import { BsHourglassSplit } from "react-icons/bs"
 
 import "./index.css"
 
-const metricIcons = {
-  balance: <FaDollarSign />,
-  discountPct: <FiCreditCard />,
-  totalRef: <FiLink />,
-  discountAmt: <BsHourglassSplit />,
-  commissionAmt: <FaPercentage />,
-  totalEarn: <FaMoneyBillWave />,
-  commissionDisc: <FaUsers />,
-  bankTransfer: <FiRepeat />,
-}
-
 const Dashboard = () => {
   const [dashboardData, setDashboardData] = useState(null)
 
@@ -72,26 +61,30 @@ const Dashboard = () => {
         <p className="dashboard-description">
           Track your referrals, earnings, and partner activity in one place
         </p>
-        <div className="section-card">
+        <section
+          className="section-card"
+          role="region"
+          aria-label="Overview metrics"
+        >
           <h1 className="section-title">Overview</h1>
           <div className="metrics-container">
             {dashboardData?.metrics.map((metric) => (
               <DashboardMetric key={metric.id} metricDetails={metric} />
             ))}
           </div>
-        </div>
+        </section>
 
-        <div className="section-card">
+        <section className="section-card">
           <h1 className="section-title">Service summary</h1>
-        </div>
+        </section>
 
-        <div className="section-card">
+        <section className="section-card">
           <h1 className="section-title">Refer friends and earn more</h1>
-        </div>
+        </section>
 
-        <div className="section-card">
+        <section className="section-card">
           <h1 className="section-title">All referrals</h1>
-        </div>
+        </section>
       </div>
       <Footer />
     </>

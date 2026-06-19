@@ -27,10 +27,11 @@
 }
 
 .home-btn {
+  text-decoration: none;
   background-color: #6366f1;
   color: #ffffff;
   border: none;
-  border-radius: 8px;
+  border-radius: 18px;
   padding: 10px 18px;
   font-size: 15px;
   font-weight: 500;
