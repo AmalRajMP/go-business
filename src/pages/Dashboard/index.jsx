@@ -67,15 +67,41 @@ const Dashboard = () => {
           aria-label="Overview metrics"
         >
           <h1 className="section-title">Overview</h1>
-          <div className="metrics-container">
+          <ul className="metrics-container">
             {dashboardData?.metrics.map((metric) => (
               <DashboardMetric key={metric.id} metricDetails={metric} />
             ))}
-          </div>
+          </ul>
         </section>
 
         <section className="section-card">
           <h1 className="section-title">Service summary</h1>
+          <ul className="service-container">
+            <li className="service-card">
+              <p className="service-title">SERVICE</p>
+              <p className="service-info service-link">
+                {dashboardData.serviceSummary.service}
+              </p>
+            </li>
+            <li className="service-card">
+              <p className="service-title">YOUR REFERRALS</p>
+              <p className="service-info">
+                {dashboardData.serviceSummary.yourReferrals}
+              </p>
+            </li>
+            <li className="service-card">
+              <p className="service-title">ACTIVE REFERRALS</p>
+              <p className="service-info">
+                {dashboardData.serviceSummary.activeReferrals}
+              </p>
+            </li>
+            <li className="service-card">
+              <p className="service-title">TOTAL REF.EARNINGS</p>
+              <p className="service-info">
+                {dashboardData.serviceSummary.totalRefEarnings}
+              </p>
+            </li>
+          </ul>
         </section>
 
         <section className="section-card">

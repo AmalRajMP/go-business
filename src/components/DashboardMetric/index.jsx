@@ -26,11 +26,11 @@ const DashboardMetric = (props) => {
   const { id, label, value } = metricDetails
 
   return (
-    <div className="metric-card">
+    <li className="metric-card">
       <div className="metric-icon">{metricIcons[id]}</div>
       <h3 className="metric-value">{value}</h3>
       <p className="metric-label">{label}</p>
-    </div>
+    </li>
   )
 }
 
