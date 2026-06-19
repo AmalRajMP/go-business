@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react"
 
 import Cookies from "js-cookie"
+import { format } from "date-fns"
 
 import Navbar from "../../components/Navbar"
 import Footer from "../../components/Footer"
@@ -56,6 +57,14 @@ const Dashboard = () => {
   const copyToClipboard = async (text) => {
     await navigator.clipboard.writeText(text)
   }
+  const formatProfit = (profit) =>
+    profit.toLocaleString("en-US", {
+      style: "currency",
+      currency: "USD",
+      maximumFractionDigits: 0,
+    })
+
+  const formatDate = (date) => format(new Date(date), "yyyy/MM/dd")
 
   return (
     <>
@@ -151,8 +160,30 @@ const Dashboard = () => {
           </div>
         </section>
 
-        <section className="section-card">
-          <h1 className="section-title">All referrals</h1>
+        <section className="section-card table-section">
+          <h1 className="section-title table-section-heading">All referrals</h1>
+
+          <table className="referrals-table">
+            <thead>
+              <tr>
+                <th className="name">NAME</th>
+                <th>SERVICE</th>
+                <th>DATE</th>
+                <th>PROFIT</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              {dashboardData?.referrals.map((referral) => (
+                <tr key={referral.id}>
+                  <td className="name">{referral.name}</td>
+                  <td>{referral.serviceName}</td>
+                  <td>{formatDate(referral.date)}</td>
+                  <td className="profit">{formatProfit(referral.profit)}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
         </section>
       </div>
       <Footer />
