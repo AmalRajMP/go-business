@@ -53,6 +53,10 @@ const Dashboard = () => {
     getReferrals()
   }, [])
 
+  const copyToClipboard = async (text) => {
+    await navigator.clipboard.writeText(text)
+  }
+
   return (
     <>
       <div className="dashboard">
@@ -61,6 +65,7 @@ const Dashboard = () => {
         <p className="dashboard-description">
           Track your referrals, earnings, and partner activity in one place
         </p>
+
         <section
           className="section-card"
           role="region"
@@ -80,32 +85,70 @@ const Dashboard = () => {
             <li className="service-card">
               <p className="service-title">SERVICE</p>
               <p className="service-info service-link">
-                {dashboardData.serviceSummary.service}
+                {dashboardData?.serviceSummary.service}
               </p>
             </li>
             <li className="service-card">
               <p className="service-title">YOUR REFERRALS</p>
               <p className="service-info">
-                {dashboardData.serviceSummary.yourReferrals}
+                {dashboardData?.serviceSummary.yourReferrals}
               </p>
             </li>
             <li className="service-card">
               <p className="service-title">ACTIVE REFERRALS</p>
               <p className="service-info">
-                {dashboardData.serviceSummary.activeReferrals}
+                {dashboardData?.serviceSummary.activeReferrals}
               </p>
             </li>
             <li className="service-card">
               <p className="service-title">TOTAL REF.EARNINGS</p>
               <p className="service-info">
-                {dashboardData.serviceSummary.totalRefEarnings}
+                {dashboardData?.serviceSummary.totalRefEarnings}
               </p>
             </li>
           </ul>
         </section>
 
-        <section className="section-card">
-          <h1 className="section-title">Refer friends and earn more</h1>
+        <section className="section-card" aria-label="Share referral">
+          <h2 className="section-title">Refer friends and earn more</h2>
+
+          <div className="referral-container">
+            <div className="referral-field">
+              <label htmlFor="referralLink">YOUR REFERRAL LINK</label>
+              <div className="copy-container">
+                <input
+                  type="text"
+                  id="referralLink"
+                  value={dashboardData?.referral.link}
+                  readOnly
+                />
+                <button
+                  type="button"
+                  onClick={() => copyToClipboard(dashboardData?.referral.link)}
+                >
+                  Copy
+                </button>
+              </div>
+            </div>
+
+            <div className="referral-field">
+              <label htmlFor="referralCode">YOUR REFERRAL CODE</label>
+              <div className="copy-container">
+                <input
+                  type="text"
+                  id="referralCode"
+                  value={dashboardData?.referral.code}
+                  readOnly
+                />
+                <button
+                  type="button"
+                  onClick={() => copyToClipboard(dashboardData?.referral.code)}
+                >
+                  Copy
+                </button>
+              </div>
+            </div>
+          </div>
         </section>
 
         <section className="section-card">

@@ -93,3 +93,77 @@
 .service-link {
   color: #2563eb;
 }
+
+.referral-container {
+  display: flex;
+  gap: 24px;
+  margin-top: 24px;
+}
+
+.referral-field {
+  flex: 1;
+
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.referral-field label {
+  color: #858e9a;
+
+  font-size: 12px;
+  font-weight: 600;
+
+  letter-spacing: 1px;
+}
+
+.copy-container {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.copy-container input {
+  flex: 1;
+
+  height: 46px;
+
+  padding: 0 16px;
+
+  border: 1px solid #cbd5e1;
+  border-radius: 10px;
+
+  background-color: #ffffff;
+
+  color: #475569;
+
+  font-size: 15px;
+
+  outline: none;
+}
+
+.copy-container input:focus {
+  border-color: #6366f1;
+}
+
+.copy-container button {
+  height: 46px;
+
+  padding: 0 22px;
+
+  border: none;
+  border-radius: 10px;
+
+  background-color: #6366f1;
+
+  color: #ffffff;
+
+  font-size: 15px;
+  font-weight: 600;
+
+  cursor: pointer;
+}
+
+.copy-container button:hover {
+  background-color: #4f46e5;
+}
