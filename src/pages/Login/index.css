@@ -7,7 +7,7 @@
   align-items: center;
 }
 .login-card {
-  height: 270px;
+  min-height: 270px;
   width: 330px;
   background-color: #ffffff;
 
