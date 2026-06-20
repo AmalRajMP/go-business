@@ -45,6 +45,8 @@ const ReferralDetails = () => {
         if (responseData.data.referrals.length > 0) {
           setReferralDetails(responseData.data.referrals[0])
           setApiStatus(apiStatusConstants.success)
+        } else {
+          setApiStatus(apiStatusConstants.failure)
         }
       } else {
         setApiStatus(apiStatusConstants.failure)
@@ -132,7 +134,7 @@ const ReferralDetails = () => {
         return renderReferralDetails()
 
       case apiStatusConstants.failure:
-        return <p>Something went wrong</p>
+        return <p>Referral not found</p>
 
       default:
         return null

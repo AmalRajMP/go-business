@@ -21,10 +21,10 @@ const Login = () => {
   const onSubmitForm = async (event) => {
     event.preventDefault()
 
-    if (!email || !password) {
-      setErrorMsg("Email and password are required")
-      return
-    }
+    // if (!email || !password) {
+    //   setErrorMsg("hello")
+    //   return
+    // }
 
     try {
       const userDetails = { email, password }
