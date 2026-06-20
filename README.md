@@ -1,16 +1,79 @@
-# React + Vite
+# Go Business Referral Dashboard
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A referral management dashboard built as part of the Go Business Frontend Assessment.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+* User Authentication
+* Protected Routes
+* Referral Dashboard
+* Overview Metrics
+* Service Summary
+* Referral Link & Code Sharing
+* Search Referrals
+* Sort Referrals by Date
+* Client-side Pagination
+* Referral Details Page
+* Not Found Page
+* Logout Functionality
 
-## React Compiler
+## Tech Stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+* React
+* React Router DOM
+* Vite
+* CSS3
+* JavaScript (ES6+)
+* js-cookie
+* date-fns
 
-## Expanding the ESLint configuration
+## Installation
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+1. Clone the repository
+
+```bash
+git clone https://github.com/AmalRajMP/go-business.git
+```
+
+2. Navigate to the project folder
+
+```bash
+cd go_business
+```
+
+3. Install dependencies
+
+```bash
+npm install
+```
+
+4. Start the development server
+
+```bash
+npm run dev
+```
+
+## Test Credentials
+
+Email: admin@example.com
+
+Password: admin123
+
+## Live Demo
+
+https://go-business-rho.vercel.app/
+
+## Project Structure
+
+```text
+src/
+├── components/
+├── pages/
+├── routes/
+├── App.jsx
+└── main.jsx
+```
+
+## Author
+
+Amal Raj M P
