@@ -8,12 +8,11 @@
   background-color: #f1f5f9;
   padding: 0 100px;
 }
-.details-page {
-  min-height: 100vh;
 
+.details-page {
   background-color: #f1f5f9;
 
-  padding: 60px 10px;
+  padding: 40px 10px;
 }
 
 .back-link {
@@ -21,37 +20,41 @@
 
   color: #6366f1;
 
-  font-size: 16px;
+  font-size: 15px;
   font-weight: 500;
 }
+
 .back-link:hover {
   text-decoration: underline;
 }
 
 .details-heading {
-  font-size: 30px;
-  font-weight: 700;
-  color: #0f172a;
   margin-bottom: 0;
+
+  color: #0f172a;
+
+  font-size: 26px;
+  font-weight: 700;
 }
+
 .details-description {
-  width: 420px;
+  width: 380px;
 
   color: #64748b;
 
-  font-size: 18px;
+  font-size: 16px;
   line-height: 1.6;
 }
 
 .details-card {
-  width: 700px;
+  width: 600px;
 
   background-color: #ffffff;
 
   border: 1px solid #e2e8f0;
   border-radius: 18px;
 
-  padding: 40px;
+  padding: 30px;
 }
 
 .details-card-header {
@@ -65,12 +68,12 @@
 
   color: #0f172a;
 
-  font-size: 28px;
+  font-size: 24px;
   font-weight: 700;
 }
 
 .service-badge {
-  padding: 10px 18px;
+  padding: 8px 14px;
 
   border-radius: 999px;
 
@@ -78,7 +81,7 @@
 
   color: #6366f1;
 
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 600;
 }
 
@@ -87,13 +90,13 @@
 
   background-color: #e2e8f0;
 
-  margin: 32px 0;
+  margin: 24px 0;
 }
 
 .detail-row {
   display: flex;
 
-  padding: 22px 0;
+  padding: 18px 0;
 
   border-bottom: 1px solid #e2e8f0;
 }
@@ -103,13 +106,13 @@
 }
 
 .detail-label {
-  width: 190px;
+  width: 160px;
 
   margin: 0;
 
   color: #64748b;
 
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 700;
 
   letter-spacing: 1px;
@@ -120,6 +123,20 @@
 
   color: #0f172a;
 
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 600;
+}
+
+.loader-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  min-height: 300px;
+}
+
+.loader {
+  color: #64748b;
+
+  font-size: 18px;
 }
