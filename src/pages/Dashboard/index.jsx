@@ -22,37 +22,43 @@ import "./index.css"
 
 const Dashboard = () => {
   const [dashboardData, setDashboardData] = useState(null)
+  const [search, setSearch] = useState("")
+  const [sort, setSort] = useState("desc")
+  const [currentPage, setCurrentPage] = useState(1)
+
+  const itemsPerPage = 10
+
+  const getReferrals = async () => {
+    try {
+      const jwtToken = Cookies.get("jwt_token")
+
+      const url = `https://v9fes04dwf.execute-api.eu-north-1.amazonaws.com/api/referrals?search=${search}&sort=${sort}`
+
+      const options = {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${jwtToken}`,
+        },
+      }
+
+      const response = await fetch(url, options)
+
+      if (response.ok) {
+        const responseData = await response.json()
+        setDashboardData(responseData.data)
+        setCurrentPage(1)
+        console.log(responseData.data)
+      } else {
+        console.log("Unable to fetch referrals")
+      }
+    } catch (e) {
+      console.log(e)
+    }
+  }
 
   useEffect(() => {
-    const getReferrals = async () => {
-      try {
-        const jwtToken = Cookies.get("jwt_token")
-
-        const url =
-          "https://v9fes04dwf.execute-api.eu-north-1.amazonaws.com/api/referrals"
-
-        const options = {
-          method: "GET",
-          headers: {
-            Authorization: `Bearer ${jwtToken}`,
-          },
-        }
-
-        const response = await fetch(url, options)
-
-        if (response.ok) {
-          const responseData = await response.json()
-          setDashboardData(responseData.data)
-          console.log(responseData.data)
-        } else {
-          console.log("Unable to fetch referrals")
-        }
-      } catch (e) {
-        console.log(e)
-      }
-    }
     getReferrals()
-  }, [])
+  }, [search, sort])
 
   const copyToClipboard = async (text) => {
     await navigator.clipboard.writeText(text)
@@ -65,6 +71,33 @@ const Dashboard = () => {
     })
 
   const formatDate = (date) => format(new Date(date), "yyyy/MM/dd")
+
+  const goToNextPage = () => {
+    setCurrentPage((prev) => prev + 1)
+  }
+
+  const goToPreviousPage = () => {
+    setCurrentPage((prev) => prev - 1)
+  }
+
+  const totalPages = Math.ceil(
+    (dashboardData?.referrals.length || 0) / itemsPerPage,
+  )
+
+  const pages = []
+  for (let i = 1; i <= totalPages; i++) {
+    pages.push(i)
+  }
+
+  const totalReferrals = dashboardData?.referrals?.length || 0
+
+  const startIndex = (currentPage - 1) * itemsPerPage
+  const endIndex = startIndex + itemsPerPage
+  const filteredReferrals =
+    dashboardData?.referrals?.slice(startIndex, endIndex) || []
+
+  const from = totalReferrals === 0 ? 0 : startIndex + 1
+  const to = Math.min(endIndex, totalReferrals)
 
   return (
     <>
@@ -163,6 +196,31 @@ const Dashboard = () => {
         <section className="section-card table-section">
           <h1 className="section-title table-section-heading">All referrals</h1>
 
+          <div className="table-header">
+            <div className="search-container">
+              <label htmlFor="searchInput">Search</label>
+              <input
+                type="search"
+                id="searchInput"
+                value={search}
+                placeholder="Name or service..."
+                onChange={(e) => setSearch(e.target.value)}
+              />
+            </div>
+
+            <div className="sort-container">
+              <label htmlFor="sortBy">Sort by date</label>
+              <select
+                id="sortBy"
+                value={sort}
+                onChange={(e) => setSort(e.target.value)}
+              >
+                <option value="desc">Newest first</option>
+                <option value="asc">Oldest first</option>
+              </select>
+            </div>
+          </div>
+
           <table className="referrals-table">
             <thead>
               <tr>
@@ -174,7 +232,7 @@ const Dashboard = () => {
             </thead>
 
             <tbody>
-              {dashboardData?.referrals.map((referral) => (
+              {filteredReferrals.map((referral) => (
                 <tr key={referral.id}>
                   <td className="name">{referral.name}</td>
                   <td>{referral.serviceName}</td>
@@ -184,6 +242,40 @@ const Dashboard = () => {
               ))}
             </tbody>
           </table>
+          <div className="pagination-container">
+            <p className="pagination-info">{`Showing ${from}–${to} of ${totalReferrals} entries`}</p>
+
+            <div className="pagination-controls">
+              <button
+                type="button"
+                className="pagination-btn"
+                disabled={currentPage === 1}
+                onClick={goToPreviousPage}
+              >
+                Previous
+              </button>
+
+              {pages.map((page) => (
+                <button
+                  key={page}
+                  type="button"
+                  className={`page-btn ${currentPage === page ? "active" : ""}`}
+                  onClick={() => setCurrentPage(page)}
+                >
+                  {page}
+                </button>
+              ))}
+
+              <button
+                type="button"
+                className="pagination-btn"
+                disabled={currentPage === totalPages}
+                onClick={goToNextPage}
+              >
+                Next
+              </button>
+            </div>
+          </div>
         </section>
       </div>
       <Footer />
