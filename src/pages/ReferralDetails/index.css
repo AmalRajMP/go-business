@@ -24,6 +24,9 @@
   font-size: 16px;
   font-weight: 500;
 }
+.back-link:hover {
+  text-decoration: underline;
+}
 
 .details-heading {
   font-size: 30px;

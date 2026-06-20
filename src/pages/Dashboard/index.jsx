@@ -104,14 +104,13 @@ const Dashboard = () => {
 
   return (
     <>
-      <Navbar />
-
       <div className="dashboard">
+        <Navbar />
         <h1 className="dashboard-title">Referral Dashboard</h1>
         <p className="dashboard-description">
           Track your referrals, earnings, and partner activity in one place
         </p>
-        {isLoading ? (
+        {isLoading && !dashboardData ? (
           <div className="loader-container">
             <p className="loader">Loading dashboard...</p>
           </div>
