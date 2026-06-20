@@ -1,0 +1,11 @@
+.name {
+  padding-left: 20px;
+}
+
+.referral-row {
+  cursor: pointer;
+}
+
+.referral-row:hover {
+  background-color: #f8fafc;
+}
