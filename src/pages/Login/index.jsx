@@ -1,11 +1,17 @@
 import { useState } from "react"
-import { useNavigate } from "react-router-dom"
+import { Navigate, useNavigate } from "react-router-dom"
 
 import Cookies from "js-cookie"
 
 import "./index.css"
 
 const Login = () => {
+  const token = Cookies.get("jwt_token")
+
+  if (token) {
+    return <Navigate to="/" replace />
+  }
+
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
   const [errorMsg, setErrorMsg] = useState("")
