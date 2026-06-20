@@ -315,3 +315,8 @@
   opacity: 0.5;
   cursor: not-allowed;
 }
+.no-results {
+  text-align: center;
+  padding: 24px;
+  color: #6b7280;
+}

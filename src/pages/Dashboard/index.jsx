@@ -232,14 +232,22 @@ const Dashboard = () => {
             </thead>
 
             <tbody>
-              {filteredReferrals.map((referral) => (
-                <tr key={referral.id}>
-                  <td className="name">{referral.name}</td>
-                  <td>{referral.serviceName}</td>
-                  <td>{formatDate(referral.date)}</td>
-                  <td className="profit">{formatProfit(referral.profit)}</td>
+              {filteredReferrals.length > 0 ? (
+                filteredReferrals.map((referral) => (
+                  <tr key={referral.id}>
+                    <td className="name">{referral.name}</td>
+                    <td>{referral.serviceName}</td>
+                    <td>{formatDate(referral.date)}</td>
+                    <td className="profit">{formatProfit(referral.profit)}</td>
+                  </tr>
+                ))
+              ) : (
+                <tr>
+                  <td colSpan="4" className="no-results">
+                    No matching entries
+                  </td>
                 </tr>
-              ))}
+              )}
             </tbody>
           </table>
           <div className="pagination-container">
